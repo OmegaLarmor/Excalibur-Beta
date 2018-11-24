@@ -17,12 +17,21 @@ public class RailNavigation : MonoBehaviour {
 
 		agent.SetDestination(railEnd.position);
 
-		Debug.Log(railEnd.position);
+		Debug.Log(agent.destination);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+		if (Input.GetAxis("Horizontal") == 1) {
+			agent.SetDestination(railBegin.position);
+		}
+		else if (Input.GetAxis("Horizontal") == -1) {
+			agent.SetDestination(railEnd.position);
+		}
+		else {
+			agent.SetDestination(transform.position);
+		}
 	}
 }
